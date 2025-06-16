@@ -1,0 +1,50 @@
+.compra-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  background-color: #fff;
+}
+
+.compra-contenido {
+  text-align: center;
+  padding: 40px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.06);
+  background-color: #f9f9f9;
+  max-width: 480px;
+}
+
+.compra-contenido img {
+  width: 100px;
+  margin-bottom: 20px;
+  object-fit: contain;
+}
+
+.compra-contenido h1 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+  color: #2e7d32;
+}
+
+.compra-contenido p {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 24px;
+}
+
+.compra-contenido button {
+  background-color: #2e7d32;
+  color: white;
+  padding: 12px 24px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.compra-contenido button:hover {
+  background-color: #1b5e20;
+}
