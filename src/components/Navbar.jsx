@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
 
-const Navbar = () => {
+const Navbar = ({ cantidadCarrito }) => {
   return (
     <nav className="navbar">
       <div className="navbar-logo">
@@ -14,6 +14,11 @@ const Navbar = () => {
         <li><Link to="/tienda">Tienda</Link></li>
         <li><Link to="/login">Ingresar</Link></li>
         <li><Link to="/register">Registro</Link></li>
+        <li>
+          <Link to="/carrito">
+            🛒 Carrito {cantidadCarrito > 0 && `(${cantidadCarrito})`}
+          </Link>
+        </li>
       </ul>
     </nav>
   );

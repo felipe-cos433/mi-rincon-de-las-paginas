@@ -1,0 +1,95 @@
+.carrito-container {
+  max-width: 700px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background-color: #fafafa;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.carrito-vacio {
+  text-align: center;
+  font-style: italic;
+  color: #555;
+}
+
+.carrito-lista {
+  list-style: none;
+  padding: 0;
+}
+
+.carrito-item {
+  padding: 1rem 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.carrito-total {
+  margin-top: 1.5rem;
+  text-align: right;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #3e8c5c;
+}
+
+.btn-finalizar {
+  margin-top: 2rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  background-color: #3e8c5c;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+}
+
+.btn-finalizar:hover {
+  background-color: #2f744b;
+}
+
+.animacion-finalizada {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.animacion-finalizada p {
+  margin-top: 1rem;
+  color: #2d7f4f;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.checkmark-circle {
+  width: 80px;
+  height: 80px;
+  background: #3e8c5c;
+  border-radius: 50%;
+  position: relative;
+}
+
+.checkmark {
+  position: absolute;
+  left: 22px;
+  top: 38px;
+  width: 12px;
+  height: 24px;
+  border: solid #fff;
+  border-width: 0 4px 4px 0;
+  transform: rotate(45deg);
+  animation: checkmarkAnim 0.6s ease forwards;
+}
+
+@keyframes checkmarkAnim {
+  0% { width: 0; height: 0; opacity: 0; }
+  50% { width: 12px; height: 0; opacity: 1; }
+  100% { width: 12px; height: 24px; opacity: 1; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}

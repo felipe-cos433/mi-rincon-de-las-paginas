@@ -87,3 +87,18 @@
   font-weight: bold;
   color: #3e8c5c;
 }
+.btn-comprar {
+  margin-top: 0.5rem;
+  background-color: #e62429;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.btn-comprar:hover {
+  background-color: #c91f24;
+}
