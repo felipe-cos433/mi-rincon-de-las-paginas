@@ -1,0 +1,89 @@
+.tienda-container {
+  display: flex;
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.filtro-lateral {
+  width: 220px;
+  background-color: #fafafa;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.05);
+}
+
+.filtro-lateral h3 {
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.filtro-lateral button {
+  display: block;
+  width: 100%;
+  margin-bottom: 0.5rem;
+  padding: 0.4rem 0.8rem;
+  border: none;
+  border-radius: 4px;
+  background-color: #eee;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.filtro-lateral button.activo,
+.filtro-lateral button:hover {
+  background-color: #e62429;
+  color: white;
+}
+
+.catalogo {
+  flex: 1;
+}
+
+.barra-busqueda {
+  margin-bottom: 1.5rem;
+}
+
+.barra-busqueda input {
+  width: 100%;
+  padding: 0.6rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.productos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.producto-card {
+  background-color: white;
+  padding: 1rem;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.25s ease;
+}
+
+.producto-card:hover {
+  transform: scale(1.03);
+}
+
+.producto-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 0.8rem;
+}
+
+.producto-card h4 {
+  font-size: 1.1rem;
+  margin-bottom: 0.4rem;
+}
+
+.producto-card p {
+  font-weight: bold;
+  color: #3e8c5c;
+}

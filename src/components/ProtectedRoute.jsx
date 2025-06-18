@@ -1,13 +1,15 @@
-import { Navigate } from "react-router-dom";
-import { useAuth } from "../context/AuthContext";
+// src/components/ProtectedRoute.jsx
+import React from 'react';
+import { Navigate } from 'react-router-dom';
+import { getCurrentUser } from '../utils/auth';
 
-function ProtectedRoute({ children, rol }) {
-  const { usuario } = useAuth();
+const ProtectedRoute = ({ children, allowedRoles }) => {
+  const user = getCurrentUser();
 
-  if (!usuario) return <Navigate to="/login" />;
-  if (rol && usuario.rol !== rol) return <Navigate to="/" />;
+  if (!user) return <Navigate to="/login" />;
+  if (!allowedRoles.includes(user.rol)) return <Navigate to="/" />;
 
   return children;
-}
+};
 
 export default ProtectedRoute;

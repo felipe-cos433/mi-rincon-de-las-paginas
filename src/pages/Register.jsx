@@ -1,60 +1,47 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import "../styles/login.css"; // reutiliza los estilos del login
+// src/pages/Register.jsx
+import React, { useState } from 'react';
+import './Register.css';
 
-function Register() {
-  const [nombre, setNombre] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [mensaje, setMensaje] = useState("");
-  const navigate = useNavigate();
+const Register = () => {
+  const [formData, setFormData] = useState({
+    nombre: '',
+    email: '',
+    telefono: '',
+    password: '',
+  });
 
-  const handleRegister = (e) => {
+  const handleChange = (e) =>
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-    const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
-
-    if (usuarios.find(u => u.email === email)) {
-      setMensaje("Este correo ya está registrado.");
-      return;
-    }
-
-    const nuevoUsuario = { nombre, email, password };
-    usuarios.push(nuevoUsuario);
-    localStorage.setItem("usuarios", JSON.stringify(usuarios));
-    setMensaje("Registro exitoso. Redirigiendo...");
-    setTimeout(() => navigate("/login"), 2000);
+    localStorage.setItem('nuevoUsuario', JSON.stringify(formData));
+    alert('Registro exitoso');
   };
 
   return (
-    <div className="login-wrapper">
-      <form onSubmit={handleRegister}>
-        <h2>Crear una cuenta</h2>
-        <input
-          type="text"
-          placeholder="Nombre completo"
-          value={nombre}
-          onChange={(e) => setNombre(e.target.value)}
-          required
-        />
-        <input
-          type="email"
-          placeholder="Correo electrónico"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-        <input
-          type="password"
-          placeholder="Contraseña"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
+    <div className="register-container">
+      <h2>Regístrate</h2>
+      <form className="register-form" onSubmit={handleSubmit}>
+        <label>Nombre *</label>
+        <input type="text" name="nombre" required onChange={handleChange} />
+
+        <label>Correo *</label>
+        <input type="email" name="email" required onChange={handleChange} />
+
+        <label>Teléfono *</label>
+        <input type="tel" name="telefono" required onChange={handleChange} />
+
+        <label>Contraseña *</label>
+        <input type="password" name="password" required onChange={handleChange} />
+
         <button type="submit">Registrarse</button>
-        {mensaje && <div className="mensaje">{mensaje}</div>}
       </form>
+      <div className="login-link">
+        ¿Ya tienes una cuenta? <a href="/login">Inicia sesión</a>
+      </div>
     </div>
   );
-}
+};
 
 export default Register;

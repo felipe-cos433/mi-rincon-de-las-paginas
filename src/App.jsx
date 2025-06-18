@@ -1,35 +1,45 @@
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
-import { CarritoProvider } from "./context/CarritoContext";
+// src/App.jsx
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import Home from './pages/Home';
+import Login from './pages/Login';
+import Register from './pages/Register';
+import Tienda from './pages/Tienda';
+import AdminDashboard from './pages/AdminDashboard';
+import ClientView from './pages/ClientView';
+import ProtectedRoute from './components/ProtectedRoute';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 
-import Login from "./pages/Login";
-import Register from "./pages/Register";
-import Inicio from "./pages/Inicio";
-import AdminPanel from "./pages/AdminPanel";
-import Colecciones from "./pages/Colecciones";
-import VistaProducto from "./pages/VistaProducto";
-import Carrito from "./pages/Carrito";
-import CompraExitosa from "./pages/CompraExitosa";
-import ProtectedRoute from "./components/ProtectedRoute";
-
-function App() {
+const App = () => {
   return (
-    <CarritoProvider>
-      <Router>
-        <Routes>
-          <Route path="/" element={<Navigate to="/login" replace />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/registro" element={<Register />} />
-          <Route path="/cliente" element={<ProtectedRoute rol="cliente"><Inicio /></ProtectedRoute>} />
-          <Route path="/admin" element={<ProtectedRoute rol="admin"><AdminPanel /></ProtectedRoute>} />
-          <Route path="/colecciones" element={<Colecciones />} />
-          <Route path="/producto" element={<VistaProducto />} />
-          <Route path="/carrito" element={<Carrito />} />
-          <Route path="/compra-exitosa" element={<CompraExitosa />} />
-          <Route path="*" element={<Navigate to="/" replace />} />
-        </Routes>
-      </Router>
-    </CarritoProvider>
+    <>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/tienda" element={<Tienda />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route
+          path="/admin"
+          element={
+            <ProtectedRoute allowedRoles={['admin']}>
+              <AdminDashboard />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/client"
+          element={
+            <ProtectedRoute allowedRoles={['cliente']}>
+              <ClientView />
+            </ProtectedRoute>
+          }
+        />
+      </Routes>
+      <Footer />
+    </>
   );
-}
+};
 
 export default App;

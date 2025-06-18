@@ -1,0 +1,32 @@
+/* Estilos base para toda la app */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #fff;
+  color: #222;
+  scroll-behavior: smooth;
+}
+
+h1, h2, h3, h4 {
+  margin: 0.5rem 0;
+  font-weight: 600;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+input, button, textarea {
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}

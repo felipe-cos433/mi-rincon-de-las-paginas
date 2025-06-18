@@ -1,0 +1,23 @@
+.bienvenida {
+  background-image: url('/assets/banner-inicio.png'); /* reemplaza con el nombre real */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 4rem 2rem;
+  text-align: center;
+  color: white;
+  position: relative;
+}
+
+.bienvenida::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.4); /* oscurece un poco el fondo */
+  z-index: 0;
+}
+
+.bienvenida > * {
+  position: relative;
+  z-index: 1;
+}

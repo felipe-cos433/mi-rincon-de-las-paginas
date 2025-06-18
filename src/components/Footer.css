@@ -1,0 +1,50 @@
+.footer {
+  background-color: #222;
+  color: white;
+  padding: 2rem;
+  font-size: 0.95rem;
+}
+
+.footer-columns {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.footer-col h4 {
+  margin-bottom: 0.5rem;
+}
+
+.footer-col a {
+  color: #e62429;
+  text-decoration: none;
+}
+
+.footer-newsletter {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.newsletter-form {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.newsletter-form input {
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: none;
+}
+
+.newsletter-form button {
+  padding: 0.5rem 1rem;
+  background: #e62429;
+  border: none;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
