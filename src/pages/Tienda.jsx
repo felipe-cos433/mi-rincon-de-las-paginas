@@ -1,24 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Tienda.css';
 import ModalCompra from '../components/ModalCompra';
-
-const productos = [
-  { id: 1, titulo: 'Harry Potter Deluxe', categoria: 'Novelas', precio: 359.99, imagen: '/assets/harry.png' },
-  { id: 2, titulo: 'Game of Thrones Deluxe', categoria: 'Novelas', precio: 569.99, imagen: '/assets/got.png' },
-  { id: 3, titulo: 'The Hobbit + LOTR Deluxe', categoria: 'Novelas', precio: 789.99, imagen: '/assets/lotr.png' },
-  { id: 4, titulo: 'Naruto Box Set', categoria: 'Infantiles', precio: 650, imagen: '/assets/naruto.png' },
-  { id: 5, titulo: 'The Hunger Games Deluxe', categoria: 'Novelas', precio: 559.99, imagen: '/assets/hunger.png' },
-  { id: 6, titulo: 'One-piece', categoria: 'Autoayuda', precio: 115, imagen: '/assets/one-piece.png' }
-];
 
 const categorias = ['Todos', 'Novelas', 'Autoayuda', 'Infantiles'];
 
 const Tienda = ({ carrito, setCarrito }) => {
+  const [productos, setProductos] = useState([]);
   const [busqueda, setBusqueda] = useState('');
   const [categoriaSeleccionada, setCategoriaSeleccionada] = useState('Todos');
   const [precioMaximo, setPrecioMaximo] = useState(800);
   const [productoSeleccionado, setProductoSeleccionado] = useState(null);
   const [mostrarModal, setMostrarModal] = useState(false);
+
+  // 🔄 Obtener productos del backend
+  useEffect(() => {
+    fetch('http://localhost:4000/api/productos')
+      .then(res => res.json())
+      .then(data => setProductos(data))
+      .catch(err => console.error('Error al cargar productos:', err));
+  }, []);
 
   const productosFiltrados = productos.filter((producto) => {
     const coincideBusqueda = producto.titulo.toLowerCase().includes(busqueda.toLowerCase());
@@ -26,6 +26,21 @@ const Tienda = ({ carrito, setCarrito }) => {
     const coincidePrecio = producto.precio <= precioMaximo;
     return coincideBusqueda && coincideCategoria && coincidePrecio;
   });
+
+  const enviarOrden = (detalleCompra) => {
+    fetch('http://localhost:4000/api/orden', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(detalleCompra)
+    })
+      .then(res => res.json())
+      .then(data => {
+        console.log('Orden registrada:', data);
+      })
+      .catch(err => {
+        console.error('Error al registrar orden:', err);
+      });
+  };
 
   return (
     <div className="tienda-container">
@@ -89,6 +104,7 @@ const Tienda = ({ carrito, setCarrito }) => {
           }}
           onConfirm={(detalleCompra) => {
             setCarrito((prev) => [...prev, detalleCompra]);
+            enviarOrden(detalleCompra); // 👈 POST a /api/orden
             setMostrarModal(false);
           }}
         />

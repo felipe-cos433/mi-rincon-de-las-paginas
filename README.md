@@ -1,34 +1,33 @@
 # 📚 El Rincón de las Páginas
 
-**Tienda web de libros digitales y colecciones especiales**, con autenticación de usuarios, roles protegidos y una experiencia de compra interactiva y moderna.
+Una tienda virtual de libros desarrollada con React, que permite a los usuarios explorar títulos, filtrar por categorías, realizar compras interactivas y gestionar un carrito persistente con una experiencia fluida y visualmente elegante.
 
----
+## 🚀 Funcionalidades principales
 
-## 🧩 Funcionalidades principales
+- 🔐 Autenticación con roles (`admin` / `cliente`) y rutas protegidas
+- 🛍️ Catálogo con filtros dinámicos por categoría, búsqueda y precio
+- ✨ Modal de compra con formulario y confirmación animada
+- 🛒 Carrito persistente con `localStorage` y vista detallada
+- ✅ Animación visual al finalizar la compra (sin librerías externas)
+- 🧱 Estructura organizada y adaptable para futuros módulos
 
-- Autenticación de usuarios con roles (`cliente` y `admin`)
-- Rutas protegidas y redireccionamiento según el rol
-- Diseño responsivo y visual elegante
-- Página de inicio con mensaje animado, productos destacados y servicios
-- Vista de colecciones con tarjetas filtrables
-- Vista individual del producto: imagen, descripción, precio, cantidad y botón de compra
-- Footer con información de contacto, redes y suscripción
+## 🗂️ Estructura
+src/ ├── components/ │ ├── Navbar.jsx │ ├── Footer.jsx │ ├── ModalCompra.jsx ├── pages/ │ ├── Home.jsx │ ├── Login.jsx │ ├── Register.jsx │ ├── Tienda.jsx │ ├── Carrito.jsx │ ├── AdminDashboard.jsx │ └── ClientView.jsx ├── styles/ │ ├── ModalCompra.css │ ├── Tienda.css │ ├── Carrito.css ├── App.jsx └── main.jsx
 
----
 
-## 🛠 Tecnologías utilizadas
+## ⚙️ Tecnologías utilizadas
 
-- **React** (con Vite)
-- **React Router DOM** para el enrutamiento
-- **CSS modular y personalizado**
-- `LocalStorage` para sesión y datos temporales
-- *Preparado para integrar Context o Backend si se desea ampliar*
+- React
+- React Router DOM
+- Vite
+- CSS modular y animaciones nativas
 
----
+## ▶️ Instalación local
 
-## 🚀 Cómo iniciar el proyecto
+1. Clonar el repositorio:
+```bash
+git clone https://github.com/usuario/el-rincon-de-las-paginas.git
 
-1. Clona el repositorio:
+npm install
 
-   ```bash
-   git clone https://github.com/tu-usuario/el-rincon-libros.git
+npm run dev
